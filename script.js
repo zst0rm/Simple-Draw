@@ -1,8 +1,20 @@
+// Toggle between Home and Draw views
+function toggleView() {
+  const homeView = document.getElementById('homeView');
+  const drawView = document.getElementById('drawView');
+  homeView.classList.toggle('hidden');
+  drawView.classList.toggle('hidden');
+  
+}
+
+
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
 const colorPicker = document.getElementById("color");
 const sizeSlider = document.getElementById("size");
 const clearButton = document.getElementById("clear");
+
+
 
 // Set canvas size dynamically based on the window size
 function resizeCanvas() {

@@ -68,34 +68,89 @@
                 opacity: 85%;
                 box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5);
             }
+            .hidden {
+            display: none;
+            }
+            .butting{
+                background-color: rgb(123, 43, 197); 
+                color: rgb(252, 246, 246);
+                padding: 10px 20px 10px 20px;
+                border-radius: 15px;
+                font-weight: 500;
+                font-size: 20px;
+                font-family: jaro;
+                transition: opacity 0.2s, box-shadow 0.2s;
+                cursor: pointer;
+            }
+            .butting:hover{
+                opacity: 95%;
+                box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5);
+            }
 
         </style>
     </head>
     <body class="hbg">
-        <div class="bgc" style="display: block; box-shadow: 12px 12px 15px rgba(0, 0, 0, 0.5);">
-            <div style="display: inline-block; vertical-align: top; margin-top: 10px;">
-                <img class="img-style" src="img/s logo.jpg">
+        <div id="homeView">
+            <div class="bgc" style="display: block; box-shadow: 12px 12px 15px rgba(0, 0, 0, 0.5);">
+                <div style="display: inline-block; vertical-align: top; margin-top: 10px;">
+                    <img class="img-style" src="img/s logo.jpg">
+                </div>
+                <div class="bgc1">
+                    <h1 class="txt">Simple Draw</h1>
+                </div>
+                
             </div>
-            <div class="bgc1">
-                <h1 class="txt">Simple Draw</h1>
+            <div style=" display:flex; flex-direction: row; justify-content:space-between; align-items: center;margin-bottom: -50px; margin-top: -50px;">
+                <div style="flex: 1; height: 500px; margin-left: 120px;margin-top: 155px;padding-left: 50px;" class="ttxt">
+                    A Fun &nbsp;&nbsp;&nbsp;Art &nbsp;Place
+                </div>
+                <div style="flex: 2; height: 300px;margin-right: -120px;margin-left: -60px;">
+                    <div class="bgi" style="height: 175px; width: 174px; margin-left: 220px; opacity: 75%;
+                    border-radius: 40px;margin-top: -40px;margin-right: 250px;">
+                    </div>
+                    <div>
+                        <button style="margin-left: 242px; margin-top: 50px; " class="buttin" onclick="toggleView()">Use Draw</button>
+                    </div>
+                </div>
+                <div style="flex: 1; height: 500px; margin-right: 250px;margin-top: 155px;" class="ttxt">
+                    For Creative Minds!!
+                </div>
             </div>
-            
         </div>
-        <div style=" display:flex; flex-direction: row; justify-content:space-between; align-items: center;margin-bottom: -50px; margin-top: -50px;">
-            <div style="flex: 1; height: 500px; margin-left: 120px;margin-top: 155px;padding-left: 50px;" class="ttxt">
-                A Fun &nbsp;&nbsp;&nbsp;Art &nbsp;Place
-            </div>
-            <div style="flex: 2; height: 300px;margin-right: -120px;margin-left: -60px;">
-                <div class="bgi" style="height: 175px; width: 174px; margin-left: 220px; opacity: 75%;
-                border-radius: 40px;margin-top: -40px;margin-right: 250px;">
+
+        <!-- Draw View -->
+        <div id="drawView" class="hidden">
+            <div class="taskbar">
+                <div>
+                    <img class="img-style" src="img/s logo.jpg">
                 </div>
                 <div>
-                    <button style="margin-left: 242px; margin-top: 50px; " class="buttin" onclick="window.location='Simple-Draw.html'; ">Use Draw</button>
+                    <h1 class = "text">&nbsp;&nbsp;Simple Draw</h1>
+                    
+                </div>
+                <div>
+                    <button class="butting" onclick="toggleView()">Back to Home</button>
+                    
                 </div>
             </div>
-            <div style="flex: 1; height: 500px; margin-right: 250px;margin-top: 155px;" class="ttxt">
-                For Creative Minds!!
+            <div class="ws">
+                <div  class="toolbar">
+                    <div>
+                        <input class="color-button" type="color" id="color" value="#000000">
+                    </div>
+                    <div>
+                        <label for="size">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;Size: </label>
+                        <input type="range" id="size" min="1" max="20" value="5">
+                    </div>
+                    <div>
+                        <button class="button-img" id="clear">Clear</button>
+                    </div>
+                </div>
+                <div>
+                    <canvas id="drawingCanvas"></canvas>
+                </div>
             </div>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
