@@ -1,0 +1,101 @@
+<!Doctype html>
+    <head>
+        <title>Simple Draw &#183; Drawing Tool</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        <style>
+            .hbg{
+                background-image: url("img/cosmo.gif");
+                background-size: cover;
+            }
+            .bgc {
+                position: relative;
+                display: inline-block;
+                padding: 10px 20px;
+                border-radius: 10px;
+                background-color: rgba(190, 140, 236, 0.5);
+                overflow: hidden;
+            }
+            .bgc1 {
+                position: relative;
+                display: inline-block;
+                padding: 10px 20px;
+                border-radius: 10px;
+                background-color: rgba(172, 104, 236, 0);
+                overflow: hidden;
+            }
+            .bgc h1 {
+                font-family: 'Jaro', Arial, sans-serif;
+                color: rgb(255, 244, 244);
+                margin: 0;
+                position: relative;
+                z-index: 1;
+            }
+            .bgc::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgb(174, 150, 196);
+                opacity: 0.05;
+                z-index: 0;
+                border-radius: inherit;
+            }
+            .bgi{
+                background-image: url("img/download.gif");
+                background-size: contain;
+                box-shadow: 12px 12px 15px rgba(0, 0, 0, 0.5);
+            }
+            .buttin{
+                background-color: rgb(123, 43, 197); 
+                color: rgb(252, 246, 246);
+                padding: 20px 30px 20px 30px;
+                border-radius: 15px;
+                font-weight: 500;
+                font-size: 20px;
+                font-family: jaro;
+                transition: opacity 0.2s, box-shadow 0.2s;
+                cursor: pointer;
+            }
+            .buttin:hover{
+                opacity: 85%;
+                box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5);
+            }
+
+        </style>
+    </head>
+    <body class="hbg">
+        <div class="bgc" style="display: block; box-shadow: 12px 12px 15px rgba(0, 0, 0, 0.5);">
+            <div style="display: inline-block; vertical-align: top; margin-top: 10px;">
+                <img class="img-style" src="img/s logo.jpg">
+            </div>
+            <div class="bgc1">
+                <h1 class="txt">Simple Draw</h1>
+            </div>
+            
+        </div>
+        <div style=" display:flex; flex-direction: row; justify-content:space-between; align-items: center;margin-bottom: -50px; margin-top: -50px;">
+            <div style="flex: 1; height: 500px; margin-left: 120px;margin-top: 155px;padding-left: 50px;" class="ttxt">
+                A Fun &nbsp;&nbsp;&nbsp;Art &nbsp;Place
+            </div>
+            <div style="flex: 2; height: 300px;margin-right: -120px;margin-left: -60px;">
+                <div class="bgi" style="height: 175px; width: 174px; margin-left: 220px; opacity: 75%;
+                border-radius: 40px;margin-top: -40px;margin-right: 250px;">
+                </div>
+                <div>
+                    <button style="margin-left: 242px; margin-top: 50px; " class="buttin" onclick="window.location.href='http://127.0.0.1:5500/simpleDraw.html'; ">Use Draw</button>
+                </div>
+            </div>
+            <div style="flex: 1; height: 500px; margin-right: 250px;margin-top: 155px;" class="ttxt">
+                For Creative Minds!!
+            </div>
+        </div>
+    </body>
+</html>
