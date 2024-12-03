@@ -1,0 +1,47 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simple Draw</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="bsg">
+        <div class="taskbar">
+            <div>
+                <img class="img-style" src="img/s logo.jpg">
+            </div>
+            <div>
+                <h1 class = "text">Simple Draw</h1>
+            </div>
+            <div>
+                <button class = "blue-button">DRAW!!!</button>
+                
+            </div>
+        </div>
+        <div class="ws">
+            <div  class="toolbar">
+                <div>
+                    <input class="color-button" type="color" id="color" value="#000000">
+                </div>
+                <div>
+                    <label for="size">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;Size: </label>
+                    <input type="range" id="size" min="1" max="20" value="5">
+                </div>
+                <div>
+                    <button class="button-img" id="clear">Clear</button>
+                </div>
+            </div>
+            <div>
+                <canvas id="drawingCanvas"></canvas>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
