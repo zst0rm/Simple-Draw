@@ -1,12 +1,10 @@
 // Toggle between Home and Draw views
 function toggleView() {
-  const homeView = document.getElementById('homeView');
-  const drawView = document.getElementById('drawView');
-  homeView.classList.toggle('hidden');
-  drawView.classList.toggle('hidden');
-  
+  const homeView = document.getElementById("homeView");
+  const drawView = document.getElementById("drawView");
+  homeView.classList.toggle("hidden");
+  drawView.classList.toggle("hidden");
 }
-
 
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
@@ -14,65 +12,64 @@ const colorPicker = document.getElementById("color");
 const sizeSlider = document.getElementById("size");
 const clearButton = document.getElementById("clear");
 
-
-
 // Set canvas size dynamically based on the window size
 function resizeCanvas() {
-  canvas.width = 1050;
-  canvas.height = 450;
+  canvas.width = 1050; // Use 90% of the parent width
+  canvas.height = 450; // Use 60% of the parent height
 }
 resizeCanvas();
-
-// Redraw when resizing (if needed)
-// Add code here to redraw saved content on canvas resize if desired.
 
 // Default settings
 let drawing = false;
 let penColor = "#000000";
 let penSize = 5;
 
-// Event listeners
-canvas.addEventListener("mousedown", (e) => {
+// Event listeners for desktop (mouse events)
+canvas.addEventListener("mousedown", startDrawing);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseup", stopDrawing);
+canvas.addEventListener("mouseout", stopDrawing);
+
+// Event listeners for mobile (touch events)
+canvas.addEventListener("touchstart", startDrawing);
+canvas.addEventListener("touchmove", draw);
+canvas.addEventListener("touchend", stopDrawing);
+
+// Color and size change listeners
+colorPicker.addEventListener("input", (e) => (penColor = e.target.value));
+sizeSlider.addEventListener("input", (e) => (penSize = e.target.value));
+clearButton.addEventListener("click", clearCanvas);
+
+// Start drawing
+function startDrawing(e) {
+  e.preventDefault(); // Prevent scrolling on touch devices
   drawing = true;
 
   // Begin a new path to avoid connecting to the previous path
   ctx.beginPath();
 
   // Get the starting position
-  const rect = canvas.getBoundingClientRect();
-  ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-});
+  const { x, y } = getPosition(e);
+  ctx.moveTo(x, y);
+}
 
-canvas.addEventListener("mouseup", () => {
+// Stop drawing
+function stopDrawing(e) {
+  e.preventDefault();
   drawing = false;
 
   // Reset the path to stop connecting lines
   ctx.beginPath();
-});
+}
 
-canvas.addEventListener("mousemove", draw);
-
-canvas.addEventListener("mouseout", () => {
-  drawing = false;
-
-  // Reset the path when the mouse leaves the canvas
-  ctx.beginPath();
-});
-
-colorPicker.addEventListener("input", (e) => (penColor = e.target.value));
-sizeSlider.addEventListener("input", (e) => (penSize = e.target.value));
-clearButton.addEventListener("click", clearCanvas);
-
-// Drawing function
+// Draw on canvas
 function draw(e) {
   if (!drawing) return;
 
-  // Get the bounding rectangle of the canvas
-  const rect = canvas.getBoundingClientRect();
+  e.preventDefault(); // Prevent scrolling on touch devices
 
-  // Adjust mouse position
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  // Get the position of the mouse or touch
+  const { x, y } = getPosition(e);
 
   ctx.lineWidth = penSize;
   ctx.lineCap = "round";
@@ -85,6 +82,23 @@ function draw(e) {
   // Start a new path for smoother lines
   ctx.beginPath();
   ctx.moveTo(x, y);
+}
+
+// Get mouse or touch position relative to the canvas
+function getPosition(e) {
+  const rect = canvas.getBoundingClientRect();
+
+  if (e.touches && e.touches[0]) {
+    return {
+      x: e.touches[0].clientX - rect.left,
+      y: e.touches[0].clientY - rect.top,
+    };
+  } else {
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+  }
 }
 
 // Clear canvas function
